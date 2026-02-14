@@ -216,7 +216,16 @@ impl<'a> CodeGenerator<'a> {
                         format!("{}", n)
                     }
                 }
-                ConstantValue::String(s) => format!("\"{}\"", s.replace('\\', "\\\\").replace('"', "\\\"")),
+                ConstantValue::String(s) => {
+                    let escaped = s
+                        .replace('\\', "\\\\")
+                        .replace('"', "\\\"")
+                        .replace('\n', "\\n")
+                        .replace('\r', "\\r")
+                        .replace('\t', "\\t")
+                        .replace('\0', "\\0");
+                    format!("\"{}\"", escaped)
+                },
                 ConstantValue::Boolean(b) => format!("{}", b),
                 ConstantValue::Null => "null".to_string(),
                 ConstantValue::Undefined => "undefined".to_string(),

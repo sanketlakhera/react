@@ -471,6 +471,54 @@ impl LoweringContext {
                 self.start_block(merge_block_id);
                 self.push_instruction(InstructionValue::LoadLocal(result_place))
             }
+            Expression::TemplateLiteral(template) => {
+                // Template literals: `Hello, ${name}!`
+                // quasis = ["Hello, ", "!"], expressions = [name]
+                // Lower as string concatenation: "Hello, " + name + "!"
+
+                let mut result: Option<Place> = None;
+
+                for (i, quasi) in template.quasis.iter().enumerate() {
+                    // Use cooked value (with escape sequences resolved), fall back to raw
+                    let quasi_str = quasi.value.cooked
+                        .as_ref()
+                        .map(|c| c.to_string())
+                        .unwrap_or_else(|| quasi.value.raw.to_string());
+
+                    // Only emit the quasi if non-empty
+                    if !quasi_str.is_empty() {
+                        let quasi_place = self.push_instruction(
+                            InstructionValue::Constant(Constant::String(quasi_str))
+                        );
+                        result = Some(match result {
+                            Some(prev) => self.push_instruction(InstructionValue::BinaryOp {
+                                op: BinaryOperator::Add,
+                                left: prev,
+                                right: quasi_place,
+                            }),
+                            None => quasi_place,
+                        });
+                    }
+
+                    // After each quasi (except the last), there's an expression
+                    if i < template.expressions.len() {
+                        let expr_place = self.lower_expression(&template.expressions[i]);
+                        result = Some(match result {
+                            Some(prev) => self.push_instruction(InstructionValue::BinaryOp {
+                                op: BinaryOperator::Add,
+                                left: prev,
+                                right: expr_place,
+                            }),
+                            None => expr_place,
+                        });
+                    }
+                }
+
+                // If the template was empty (``), produce an empty string
+                result.unwrap_or_else(|| {
+                    self.push_instruction(InstructionValue::Constant(Constant::String(String::new())))
+                })
+            }
             _ => self.create_temp(),
         }
     }

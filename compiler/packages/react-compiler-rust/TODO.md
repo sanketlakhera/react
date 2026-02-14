@@ -14,9 +14,9 @@ This document tracks implementation progress and remaining features. Items marke
 | Operators | 4 | 0 | 0 | 4 |
 | Functions & Classes | 0 | 0 | 4 | 4 |
 | Advanced Patterns | 0 | 2 | 2 | 4 |
-| Expressions | 1 | 0 | 6 | 7 |
+| Expressions | 2 | 0 | 5 | 7 |
 | Code Quality | 0 | 1 | 2 | 3 |
-| **Total** | **9** | **3** | **17** | **29** |
+| **Total** | **10** | **3** | **16** | **29** |
 
 ---
 
@@ -217,17 +217,9 @@ const result = obj?.method?.();
 
 ## 5. Expressions
 
-### 5.1 ❌ Template Literals
+### 5.1 ✅ Template Literals — DONE
 
-**Status:** Not implemented
-
-```javascript
-const greeting = `Hello, ${name}!`;
-```
-
-**Implementation:** Concatenate quasis and expressions with `+` operator. Straightforward — lower each quasi as a string constant and each expression normally, then chain `BinaryOp::Add`.
-
-**Priority:** HIGH — very common in React
+Implemented by lowering quasis and expressions into `BinaryOp::Add` concatenation chains. Uses `cooked` value for proper escape handling. Also fixed string escaping in `codegen.rs` to handle `\n`, `\r`, `\t`, `\0`. Tested with `sprout_template_literals` (6 cases: simple, multi-expression, plain, empty, nested ternary, escape sequences).
 
 ---
 
@@ -346,7 +338,7 @@ return 1 + 2;
 | Arrow functions | `lib.rs`, `lowering.rs` | ❌ |
 | Destructuring (nested) | `lowering.rs` | ❌ |
 | Optional chaining | `lowering.rs` | ❌ |
-| Template literals | `lowering.rs` | ❌ |
+| Template literals | `lowering.rs`, `codegen.rs` | ✅ |
 | Ternary | `lowering.rs` | ✅ |
 | New expressions | `lowering.rs`, `hir.rs`, `codegen.rs` | ❌ |
 | Unused var elimination | `codegen.rs` | ❌ |
@@ -356,7 +348,7 @@ return 1 + 2;
 ## Priority Order (Next Steps)
 
 ### 🔴 High Priority — needed to process real React code
-1. **Template literals** — very common, straightforward implementation
+1. ~~**Template literals**~~ ✅
 2. **Arrow functions** — most React components use these
 3. **Optional chaining** — ubiquitous in modern React
 4. **New expressions** — `new Date()`, `new Map()`, etc.

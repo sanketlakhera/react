@@ -138,3 +138,9 @@ fn sprout_switch() {
     let result = run_sprout_test("switch.js");
     assert!(result.is_ok(), "{}", result.unwrap_err());
 }
+
+#[test]
+fn sprout_template_literals() {
+    let result = run_sprout_test("template_literals.js");
+    assert!(result.is_ok(), "{}", result.unwrap_err());
+}
