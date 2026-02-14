@@ -1,0 +1,379 @@
+---
+source: tests/fixtures_test.rs
+expression: output
+input_file: fixtures/reactive_scope_basic.js
+---
+=== HIR (SSA) ===
+HIRFunction {
+    name: Some(
+        "Component",
+    ),
+    params: [
+        Identifier {
+            name: "props",
+            id: 0,
+        },
+    ],
+    entry_block: BlockId(
+        0,
+    ),
+    blocks: {
+        BlockId(
+            0,
+        ): BasicBlock {
+            id: BlockId(
+                0,
+            ),
+            instructions: [
+                Instruction {
+                    id: InstrId(
+                        0,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t0",
+                            id: 0,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "props",
+                                id: 0,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        1,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t1",
+                            id: 1,
+                        },
+                    },
+                    value: PropertyLoad {
+                        object: Place {
+                            identifier: Identifier {
+                                name: "t0",
+                                id: 0,
+                            },
+                        },
+                        property: "a",
+                    },
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        2,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t2",
+                            id: 2,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "props",
+                                id: 0,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        3,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t3",
+                            id: 3,
+                        },
+                    },
+                    value: PropertyLoad {
+                        object: Place {
+                            identifier: Identifier {
+                                name: "t2",
+                                id: 2,
+                            },
+                        },
+                        property: "b",
+                    },
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        4,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t4",
+                            id: 4,
+                        },
+                    },
+                    value: BinaryOp {
+                        op: Add,
+                        left: Place {
+                            identifier: Identifier {
+                                name: "t1",
+                                id: 1,
+                            },
+                        },
+                        right: Place {
+                            identifier: Identifier {
+                                name: "t3",
+                                id: 3,
+                            },
+                        },
+                    },
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        5,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "x",
+                            id: 1,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "t4",
+                                id: 4,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        6,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t6",
+                            id: 6,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "x",
+                                id: 1,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        7,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t7",
+                            id: 7,
+                        },
+                    },
+                    value: Constant(
+                        Float(
+                            2.0,
+                        ),
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        8,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t8",
+                            id: 8,
+                        },
+                    },
+                    value: BinaryOp {
+                        op: Mul,
+                        left: Place {
+                            identifier: Identifier {
+                                name: "t6",
+                                id: 6,
+                            },
+                        },
+                        right: Place {
+                            identifier: Identifier {
+                                name: "t7",
+                                id: 7,
+                            },
+                        },
+                    },
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        9,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "y",
+                            id: 1,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "t8",
+                                id: 8,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        10,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t10",
+                            id: 10,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "y",
+                                id: 1,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        11,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t11",
+                            id: 11,
+                        },
+                    },
+                    value: Object {
+                        properties: [
+                            KeyValue {
+                                key: Identifier(
+                                    "value",
+                                ),
+                                value: Place {
+                                    identifier: Identifier {
+                                        name: "t10",
+                                        id: 10,
+                                    },
+                                },
+                            },
+                        ],
+                    },
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        12,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "obj",
+                            id: 1,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "t11",
+                                id: 11,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        13,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t13",
+                            id: 13,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "obj",
+                                id: 1,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+            ],
+            terminal: Return(
+                Some(
+                    Place {
+                        identifier: Identifier {
+                            name: "t13",
+                            id: 13,
+                        },
+                    },
+                ),
+            ),
+            preds: [],
+        },
+        BlockId(
+            1,
+        ): BasicBlock {
+            id: BlockId(
+                1,
+            ),
+            instructions: [],
+            terminal: Return(
+                None,
+            ),
+            preds: [],
+        },
+    },
+}
+
+=== Reactive Scopes ===
+Scope ScopeId(0): range (4, 14)
+  Dependencies: t1 t3 
+  Declarations: obj t10 t11 t13 t4 t6 t7 t8 x y 
+
+=== Generated Code ===
+function Component() {
+  const $ = _c(12);
+  const t0 = props;
+  const t1 = t0.a;
+  const t2 = props;
+  const t3 = t2.b;
+  const t4 = t1 + t3;
+  let x_1 = t4;
+  const t6 = x_1;
+  const t7 = 2;
+  const t8 = t6 * t7;
+  let y_1 = t8;
+  const t10 = y_1;
+  const t11 = { value: t10 };
+  let obj_1 = t11;
+  const t13 = obj_1;
+  return t13;
+}

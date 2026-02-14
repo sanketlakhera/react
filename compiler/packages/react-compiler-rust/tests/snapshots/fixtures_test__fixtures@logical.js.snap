@@ -1,0 +1,633 @@
+---
+source: tests/fixtures_test.rs
+expression: output
+input_file: fixtures/logical.js
+---
+=== HIR (SSA) ===
+HIRFunction {
+    name: Some(
+        "logic",
+    ),
+    params: [
+        Identifier {
+            name: "a",
+            id: 0,
+        },
+        Identifier {
+            name: "b",
+            id: 1,
+        },
+    ],
+    entry_block: BlockId(
+        0,
+    ),
+    blocks: {
+        BlockId(
+            0,
+        ): BasicBlock {
+            id: BlockId(
+                0,
+            ),
+            instructions: [
+                Instruction {
+                    id: InstrId(
+                        0,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t0",
+                            id: 0,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "a",
+                                id: 0,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+            ],
+            terminal: If {
+                test: Place {
+                    identifier: Identifier {
+                        name: "t0",
+                        id: 0,
+                    },
+                },
+                consequent: BlockId(
+                    1,
+                ),
+                alternate: BlockId(
+                    2,
+                ),
+            },
+            preds: [],
+        },
+        BlockId(
+            1,
+        ): BasicBlock {
+            id: BlockId(
+                1,
+            ),
+            instructions: [
+                Instruction {
+                    id: InstrId(
+                        2,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t3",
+                            id: 3,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "b",
+                                id: 0,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        3,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t1",
+                            id: 1,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "t3",
+                                id: 3,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+            ],
+            terminal: Goto(
+                BlockId(
+                    3,
+                ),
+            ),
+            preds: [
+                BlockId(
+                    0,
+                ),
+            ],
+        },
+        BlockId(
+            2,
+        ): BasicBlock {
+            id: BlockId(
+                2,
+            ),
+            instructions: [
+                Instruction {
+                    id: InstrId(
+                        1,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t1",
+                            id: 2,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "t0",
+                                id: 0,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+            ],
+            terminal: Goto(
+                BlockId(
+                    3,
+                ),
+            ),
+            preds: [
+                BlockId(
+                    0,
+                ),
+            ],
+        },
+        BlockId(
+            3,
+        ): BasicBlock {
+            id: BlockId(
+                3,
+            ),
+            instructions: [
+                Instruction {
+                    id: InstrId(
+                        13,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t1",
+                            id: 3,
+                        },
+                    },
+                    value: Phi {
+                        operands: [
+                            (
+                                BlockId(
+                                    1,
+                                ),
+                                Place {
+                                    identifier: Identifier {
+                                        name: "t1",
+                                        id: 1,
+                                    },
+                                },
+                            ),
+                            (
+                                BlockId(
+                                    2,
+                                ),
+                                Place {
+                                    identifier: Identifier {
+                                        name: "t1",
+                                        id: 2,
+                                    },
+                                },
+                            ),
+                        ],
+                    },
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        4,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t5",
+                            id: 5,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "t1",
+                                id: 3,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        5,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "x",
+                            id: 1,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "t5",
+                                id: 5,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        6,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t7",
+                            id: 7,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "a",
+                                id: 0,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+            ],
+            terminal: If {
+                test: Place {
+                    identifier: Identifier {
+                        name: "t7",
+                        id: 7,
+                    },
+                },
+                consequent: BlockId(
+                    8,
+                ),
+                alternate: BlockId(
+                    7,
+                ),
+            },
+            preds: [
+                BlockId(
+                    1,
+                ),
+                BlockId(
+                    2,
+                ),
+            ],
+        },
+        BlockId(
+            4,
+        ): BasicBlock {
+            id: BlockId(
+                4,
+            ),
+            instructions: [],
+            terminal: Return(
+                None,
+            ),
+            preds: [],
+        },
+        BlockId(
+            5,
+        ): BasicBlock {
+            id: BlockId(
+                5,
+            ),
+            instructions: [],
+            terminal: Return(
+                None,
+            ),
+            preds: [],
+        },
+        BlockId(
+            6,
+        ): BasicBlock {
+            id: BlockId(
+                6,
+            ),
+            instructions: [],
+            terminal: Return(
+                None,
+            ),
+            preds: [],
+        },
+        BlockId(
+            7,
+        ): BasicBlock {
+            id: BlockId(
+                7,
+            ),
+            instructions: [
+                Instruction {
+                    id: InstrId(
+                        8,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t10",
+                            id: 10,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "b",
+                                id: 0,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        9,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t8",
+                            id: 1,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "t10",
+                                id: 10,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+            ],
+            terminal: Goto(
+                BlockId(
+                    9,
+                ),
+            ),
+            preds: [
+                BlockId(
+                    3,
+                ),
+            ],
+        },
+        BlockId(
+            8,
+        ): BasicBlock {
+            id: BlockId(
+                8,
+            ),
+            instructions: [
+                Instruction {
+                    id: InstrId(
+                        7,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t8",
+                            id: 2,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "t7",
+                                id: 7,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+            ],
+            terminal: Goto(
+                BlockId(
+                    9,
+                ),
+            ),
+            preds: [
+                BlockId(
+                    3,
+                ),
+            ],
+        },
+        BlockId(
+            9,
+        ): BasicBlock {
+            id: BlockId(
+                9,
+            ),
+            instructions: [
+                Instruction {
+                    id: InstrId(
+                        14,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t8",
+                            id: 3,
+                        },
+                    },
+                    value: Phi {
+                        operands: [
+                            (
+                                BlockId(
+                                    7,
+                                ),
+                                Place {
+                                    identifier: Identifier {
+                                        name: "t8",
+                                        id: 1,
+                                    },
+                                },
+                            ),
+                            (
+                                BlockId(
+                                    8,
+                                ),
+                                Place {
+                                    identifier: Identifier {
+                                        name: "t8",
+                                        id: 2,
+                                    },
+                                },
+                            ),
+                        ],
+                    },
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        10,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t12",
+                            id: 12,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "t8",
+                                id: 3,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        11,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "y",
+                            id: 1,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "t12",
+                                id: 12,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        12,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t14",
+                            id: 14,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "x",
+                                id: 1,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+            ],
+            terminal: Return(
+                Some(
+                    Place {
+                        identifier: Identifier {
+                            name: "t14",
+                            id: 14,
+                        },
+                    },
+                ),
+            ),
+            preds: [
+                BlockId(
+                    7,
+                ),
+                BlockId(
+                    8,
+                ),
+            ],
+        },
+        BlockId(
+            10,
+        ): BasicBlock {
+            id: BlockId(
+                10,
+            ),
+            instructions: [],
+            terminal: Return(
+                None,
+            ),
+            preds: [],
+        },
+        BlockId(
+            11,
+        ): BasicBlock {
+            id: BlockId(
+                11,
+            ),
+            instructions: [],
+            terminal: Return(
+                None,
+            ),
+            preds: [],
+        },
+        BlockId(
+            12,
+        ): BasicBlock {
+            id: BlockId(
+                12,
+            ),
+            instructions: [],
+            terminal: Return(
+                None,
+            ),
+            preds: [],
+        },
+        BlockId(
+            13,
+        ): BasicBlock {
+            id: BlockId(
+                13,
+            ),
+            instructions: [],
+            terminal: Return(
+                None,
+            ),
+            preds: [],
+        },
+    },
+}
+
+=== Reactive Scopes ===
+Scope ScopeId(0): range (0, 15)
+  Declarations: t0 t1 t1 t1 t10 t12 t14 t3 t5 t7 t8 t8 t8 x y 
+
+=== Generated Code ===
+function logic() {
+  const $ = _c(15);
+  const t0 = a;
+  if (t0) {
+    const t3 = b;
+    const t1 = t3;
+    const t5 = t1;
+    let x_1 = t5;
+    const t7 = a;
+    if (t7) {
+      const t8 = t7;
+      const t12 = t8;
+      let y_1 = t12;
+      const t14 = x_1;
+      return t14;
+    } else {
+      const t10 = b;
+      const t8 = t10;
+    }
+  } else {
+    const t1 = t0;
+  }
+}

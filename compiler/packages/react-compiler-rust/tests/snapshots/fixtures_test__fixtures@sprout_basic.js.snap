@@ -1,0 +1,133 @@
+---
+source: tests/fixtures_test.rs
+expression: output
+input_file: fixtures/sprout_basic.js
+---
+=== HIR (SSA) ===
+HIRFunction {
+    name: Some(
+        "add",
+    ),
+    params: [
+        Identifier {
+            name: "a",
+            id: 0,
+        },
+        Identifier {
+            name: "b",
+            id: 1,
+        },
+    ],
+    entry_block: BlockId(
+        0,
+    ),
+    blocks: {
+        BlockId(
+            0,
+        ): BasicBlock {
+            id: BlockId(
+                0,
+            ),
+            instructions: [
+                Instruction {
+                    id: InstrId(
+                        0,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t0",
+                            id: 0,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "a",
+                                id: 0,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        1,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t1",
+                            id: 1,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "b",
+                                id: 0,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        2,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t2",
+                            id: 2,
+                        },
+                    },
+                    value: BinaryOp {
+                        op: Add,
+                        left: Place {
+                            identifier: Identifier {
+                                name: "t0",
+                                id: 0,
+                            },
+                        },
+                        right: Place {
+                            identifier: Identifier {
+                                name: "t1",
+                                id: 1,
+                            },
+                        },
+                    },
+                    scope: None,
+                },
+            ],
+            terminal: Return(
+                Some(
+                    Place {
+                        identifier: Identifier {
+                            name: "t2",
+                            id: 2,
+                        },
+                    },
+                ),
+            ),
+            preds: [],
+        },
+        BlockId(
+            1,
+        ): BasicBlock {
+            id: BlockId(
+                1,
+            ),
+            instructions: [],
+            terminal: Return(
+                None,
+            ),
+            preds: [],
+        },
+    },
+}
+
+=== Generated Code ===
+function add() {
+  const t0 = a;
+  const t1 = b;
+  const t2 = t0 + t1;
+  return t2;
+}

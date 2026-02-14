@@ -1,0 +1,138 @@
+{
+  "passed": 1458,
+  "failed": 33,
+  "errors": [
+    {
+      "fixture": "array-expression-spread.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "array-map-noAlias-escaping-function.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "array-spread-later-mutated.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "array-spread-mutable-iterator.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "call-spread-argument-mutable-iterator.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "call-spread.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "computed-call-spread.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "destructure-array-assignment-to-context-var.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "destructure-mixed-property-key-types.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "destructure-string-literal-invalid-identifier-property-key.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "destructuring-assignment-array-default.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "destructuring-assignment.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "evaluation-order-mutate-call-after-dependency-load.ts",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "evaluation-order-mutate-store-after-dependency-load.ts",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "fbt/repro-macro-property-not-handled.tsx",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "for-in-statement-break.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "for-in-statement-continue.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "for-in-statement-type-inference.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "global-types/call-spread-argument-set.ts",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "holey-array-expr.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "merge-consecutive-scopes-objects.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "new-mutability/object-expression-computed-member.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "object-computed-access-assignment.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "object-expression-computed-key-modified-during-after-construction-sequence-expr.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "object-expression-computed-key-modified-during-after-construction.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "object-expression-computed-key-mutate-key-while-constructing-object.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "object-expression-computed-member.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "object-expression-member-expr-call.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "object-expression-string-literal-key.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "object-literal-spread-element.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "object-properties.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "property-call-spread.js",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    },
+    {
+      "fixture": "repro-non-identifier-object-keys.ts",
+      "error": "warning: unused import: `Place`\n --> src/hir/reactive_function.rs:8:70\n  |\n8 | ...ction, InstructionValue, Place, Terminal,\n  |                             ^^^^^\n  |\n  = note: `#[warn(unused_imports)]"
+    }
+  ]
+}

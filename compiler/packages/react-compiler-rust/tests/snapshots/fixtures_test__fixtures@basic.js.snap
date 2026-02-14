@@ -1,0 +1,174 @@
+---
+source: tests/fixtures_test.rs
+expression: output
+input_file: fixtures/basic.js
+---
+=== HIR (SSA) ===
+HIRFunction {
+    name: Some(
+        "basic",
+    ),
+    params: [
+        Identifier {
+            name: "x",
+            id: 0,
+        },
+    ],
+    entry_block: BlockId(
+        0,
+    ),
+    blocks: {
+        BlockId(
+            0,
+        ): BasicBlock {
+            id: BlockId(
+                0,
+            ),
+            instructions: [
+                Instruction {
+                    id: InstrId(
+                        0,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t0",
+                            id: 0,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "x",
+                                id: 0,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        1,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t1",
+                            id: 1,
+                        },
+                    },
+                    value: Constant(
+                        Float(
+                            1.0,
+                        ),
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        2,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t2",
+                            id: 2,
+                        },
+                    },
+                    value: BinaryOp {
+                        op: Add,
+                        left: Place {
+                            identifier: Identifier {
+                                name: "t0",
+                                id: 0,
+                            },
+                        },
+                        right: Place {
+                            identifier: Identifier {
+                                name: "t1",
+                                id: 1,
+                            },
+                        },
+                    },
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        3,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "y",
+                            id: 1,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "t2",
+                                id: 2,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+                Instruction {
+                    id: InstrId(
+                        4,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t4",
+                            id: 4,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "y",
+                                id: 1,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+            ],
+            terminal: Return(
+                Some(
+                    Place {
+                        identifier: Identifier {
+                            name: "t4",
+                            id: 4,
+                        },
+                    },
+                ),
+            ),
+            preds: [],
+        },
+        BlockId(
+            1,
+        ): BasicBlock {
+            id: BlockId(
+                1,
+            ),
+            instructions: [],
+            terminal: Return(
+                None,
+            ),
+            preds: [],
+        },
+    },
+}
+
+=== Reactive Scopes ===
+Scope ScopeId(0): range (2, 5)
+  Dependencies: t0 t1 
+  Declarations: t2 t4 y 
+
+=== Generated Code ===
+function basic() {
+  const $ = _c(5);
+  const t0 = x;
+  const t1 = 1;
+  const t2 = t0 + t1;
+  let y_1 = t2;
+  const t4 = y_1;
+  return t4;
+}

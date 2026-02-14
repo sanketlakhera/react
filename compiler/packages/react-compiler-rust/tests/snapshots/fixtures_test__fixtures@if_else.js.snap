@@ -1,0 +1,208 @@
+---
+source: tests/fixtures_test.rs
+expression: output
+input_file: fixtures/if_else.js
+---
+=== HIR (SSA) ===
+HIRFunction {
+    name: Some(
+        "conditional",
+    ),
+    params: [
+        Identifier {
+            name: "a",
+            id: 0,
+        },
+    ],
+    entry_block: BlockId(
+        0,
+    ),
+    blocks: {
+        BlockId(
+            0,
+        ): BasicBlock {
+            id: BlockId(
+                0,
+            ),
+            instructions: [
+                Instruction {
+                    id: InstrId(
+                        0,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t0",
+                            id: 0,
+                        },
+                    },
+                    value: LoadLocal(
+                        Place {
+                            identifier: Identifier {
+                                name: "a",
+                                id: 0,
+                            },
+                        },
+                    ),
+                    scope: None,
+                },
+            ],
+            terminal: If {
+                test: Place {
+                    identifier: Identifier {
+                        name: "t0",
+                        id: 0,
+                    },
+                },
+                consequent: BlockId(
+                    1,
+                ),
+                alternate: BlockId(
+                    2,
+                ),
+            },
+            preds: [],
+        },
+        BlockId(
+            1,
+        ): BasicBlock {
+            id: BlockId(
+                1,
+            ),
+            instructions: [
+                Instruction {
+                    id: InstrId(
+                        1,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t1",
+                            id: 1,
+                        },
+                    },
+                    value: Constant(
+                        Float(
+                            1.0,
+                        ),
+                    ),
+                    scope: None,
+                },
+            ],
+            terminal: Return(
+                Some(
+                    Place {
+                        identifier: Identifier {
+                            name: "t1",
+                            id: 1,
+                        },
+                    },
+                ),
+            ),
+            preds: [
+                BlockId(
+                    0,
+                ),
+            ],
+        },
+        BlockId(
+            2,
+        ): BasicBlock {
+            id: BlockId(
+                2,
+            ),
+            instructions: [
+                Instruction {
+                    id: InstrId(
+                        2,
+                    ),
+                    lvalue: Place {
+                        identifier: Identifier {
+                            name: "t2",
+                            id: 2,
+                        },
+                    },
+                    value: Constant(
+                        Float(
+                            0.0,
+                        ),
+                    ),
+                    scope: None,
+                },
+            ],
+            terminal: Return(
+                Some(
+                    Place {
+                        identifier: Identifier {
+                            name: "t2",
+                            id: 2,
+                        },
+                    },
+                ),
+            ),
+            preds: [
+                BlockId(
+                    0,
+                ),
+            ],
+        },
+        BlockId(
+            3,
+        ): BasicBlock {
+            id: BlockId(
+                3,
+            ),
+            instructions: [],
+            terminal: Return(
+                None,
+            ),
+            preds: [],
+        },
+        BlockId(
+            4,
+        ): BasicBlock {
+            id: BlockId(
+                4,
+            ),
+            instructions: [],
+            terminal: Return(
+                None,
+            ),
+            preds: [],
+        },
+        BlockId(
+            5,
+        ): BasicBlock {
+            id: BlockId(
+                5,
+            ),
+            instructions: [],
+            terminal: Return(
+                None,
+            ),
+            preds: [],
+        },
+        BlockId(
+            6,
+        ): BasicBlock {
+            id: BlockId(
+                6,
+            ),
+            instructions: [],
+            terminal: Return(
+                None,
+            ),
+            preds: [],
+        },
+    },
+}
+
+=== Generated Code ===
+function conditional() {
+  const t0 = a;
+  if (t0) {
+    const t1 = 1;
+    return t1;
+  } else {
+    const t2 = 0;
+    return t2;
+  }
+}
