@@ -622,6 +622,7 @@ HIRFunction {
             preds: [],
         },
     },
+    loop_headers: {},
 }
 
 === Reactive Scopes ===
@@ -632,22 +633,23 @@ Scope ScopeId(0): range (2, 27)
 === Generated Code ===
 function component() {
   const $ = _c(27);
+  let a_1, b_1, c_1, d_1;
   const t0 = 1;
   const t1 = 2;
   const t2 = { x: t0, y: t1 };
-  let a_1 = t2;
+  a_1 = t2;
   const t4 = 1;
   const t5 = 2;
   const t6 = 3;
   const t7 = [t4, t5, t6];
-  let b_1 = t7;
+  b_1 = t7;
   const t9 = a_1;
   const t10 = t9.x;
-  let c_1 = t10;
+  c_1 = t10;
   const t12 = b_1;
   const t13 = 0;
   const t14 = t12[t13];
-  let d_1 = t14;
+  d_1 = t14;
   const t16 = 3;
   const t17 = a_1;
   const t18 = t17.y = t16;

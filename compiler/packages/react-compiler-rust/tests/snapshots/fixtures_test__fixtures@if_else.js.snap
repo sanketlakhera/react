@@ -193,10 +193,11 @@ HIRFunction {
             preds: [],
         },
     },
+    loop_headers: {},
 }
 
 === Generated Code ===
-function conditional() {
+function conditional(a) {
   const t0 = a;
   if (t0) {
     const t1 = 1;

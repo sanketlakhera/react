@@ -155,6 +155,7 @@ HIRFunction {
             preds: [],
         },
     },
+    loop_headers: {},
 }
 
 === Reactive Scopes ===
@@ -163,12 +164,13 @@ Scope ScopeId(0): range (2, 5)
   Declarations: t2 t4 y 
 
 === Generated Code ===
-function basic() {
+function basic(x) {
   const $ = _c(5);
+  let y_1;
   const t0 = x;
   const t1 = 1;
   const t2 = t0 + t1;
-  let y_1 = t2;
+  y_1 = t2;
   const t4 = y_1;
   return t4;
 }

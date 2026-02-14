@@ -355,6 +355,11 @@ HIRFunction {
             preds: [],
         },
     },
+    loop_headers: {
+        BlockId(
+            1,
+        ),
+    },
 }
 
 === Reactive Scopes ===
@@ -362,18 +367,25 @@ Scope ScopeId(0): range (0, 9)
   Declarations: i i i t0 t2 t3 t4 t5 t7 
 
 === Generated Code ===
-function loopy() {
+function loopy(n) {
   const $ = _c(9);
+  let i_1, i_2, i_3;
   const t0 = 0;
-  let i_1 = t0;
-  const t2 = i_2;
-  if (t2) {
+  i_1 = t0;
+  i_2 = i_1;
+  while (true) {
+    const t2 = i_2;
+    if (t2) {
+    } else {
+      break;
+    }
     const t3 = i_2;
     const t4 = 1;
     const t5 = t3 + t4;
-    let i_3 = t5;
-  } else {
-    const t7 = i_2;
-    return t7;
+    i_3 = t5;
+    i_2 = i_3;
+    continue;
   }
+  const t7 = i_2;
+  return t7;
 }

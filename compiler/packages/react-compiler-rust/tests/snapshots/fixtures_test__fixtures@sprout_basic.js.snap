@@ -15,7 +15,7 @@ HIRFunction {
         },
         Identifier {
             name: "b",
-            id: 1,
+            id: 0,
         },
     ],
     entry_block: BlockId(
@@ -122,10 +122,11 @@ HIRFunction {
             preds: [],
         },
     },
+    loop_headers: {},
 }
 
 === Generated Code ===
-function add() {
+function add(a, b) {
   const t0 = a;
   const t1 = b;
   const t2 = t0 + t1;
