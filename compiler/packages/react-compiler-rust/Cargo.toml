@@ -1,0 +1,36 @@
+[package]
+name = "react-compiler-rust"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = []
+napi = ["dep:napi", "dep:napi-derive"]
+
+[dependencies]
+clap = { version = "4.5.53", features = ["derive"] }
+insta = { version = "1.45.0", features = ["json", "glob"] }
+miette = { version = "7.6.0", features = ["fancy"] }
+napi = { version = "2", features = ["napi4"], optional = true }
+napi-derive = { version = "2", optional = true }
+oxc_allocator = "0.105.0"
+oxc_ast = "0.105.0"
+oxc_parser = "0.105.0"
+oxc_span = "0.105.0"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.147"
+tempfile = "3.15"
+thiserror = "2.0"
+
+[build-dependencies]
+napi-build = "2"
+
+[[bench]]
+name = "switch_benchmark"
+harness = false
+
+[dev-dependencies]
+criterion = "0.5"
