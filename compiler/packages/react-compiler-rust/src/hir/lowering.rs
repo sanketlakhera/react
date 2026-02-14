@@ -441,6 +441,36 @@ impl LoweringContext {
                 self.start_block(merge_block_id);
                 self.push_instruction(InstructionValue::LoadLocal(result_place))
             }
+            Expression::ConditionalExpression(cond) => {
+                let test = self.lower_expression(&cond.test);
+
+                let then_block_id = self.next_block_id();
+                let else_block_id = self.next_block_id();
+                let merge_block_id = self.next_block_id();
+                let result_place = self.create_temp();
+
+                self.terminate_block(Terminal::If {
+                    test,
+                    consequent: then_block_id,
+                    alternate: else_block_id,
+                });
+
+                // Then branch: evaluate consequent, store result
+                self.start_block(then_block_id);
+                let then_val = self.lower_expression(&cond.consequent);
+                self.push_instruction(InstructionValue::StoreLocal(result_place.clone(), then_val));
+                self.terminate_block(Terminal::Goto(merge_block_id));
+
+                // Else branch: evaluate alternate, store result
+                self.start_block(else_block_id);
+                let else_val = self.lower_expression(&cond.alternate);
+                self.push_instruction(InstructionValue::StoreLocal(result_place.clone(), else_val));
+                self.terminate_block(Terminal::Goto(merge_block_id));
+
+                // Merge: load the result
+                self.start_block(merge_block_id);
+                self.push_instruction(InstructionValue::LoadLocal(result_place))
+            }
             _ => self.create_temp(),
         }
     }
