@@ -277,8 +277,9 @@ impl<'a> TreeBuilder<'a> {
                     ));
                 }
                 Terminal::Goto(target) => {
-                    // Check for break/continue
-                    if let Some(loop_info) = self.loop_stack.last() {
+                    // Check for break/continue across the entire loop stack
+                    // (e.g. `continue` inside a switch inside a for loop)
+                    for loop_info in self.loop_stack.iter().rev() {
                         if *target == loop_info.break_target {
                             statements.extend(self.emit_phi_assignments(*target, block_id));
                             statements.push(ReactiveStatement::Break);
@@ -340,6 +341,16 @@ impl<'a> TreeBuilder<'a> {
                         test: test_id,
                         cases: reactive_cases,
                     });
+
+                    // Continue building from the merge block (code after the switch)
+                    // This is critical for e.g. a switch inside a for loop where the
+                    // merge block leads to the loop's update + back-edge.
+                    // Pass None as prev_id: phi assignments for the merge block are
+                    // already handled within each case's break path.
+                    if let Some(target) = merge_target {
+                        let merge_stmts = self.build_block(*target, None);
+                        statements.extend(merge_stmts);
+                    }
                 }
             }
         }
